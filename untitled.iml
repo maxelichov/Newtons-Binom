@@ -31,8 +31,11 @@
           <root url="jar://$MODULE_DIR$/../test/watchmaker-framework-0.7.1.jar!/" />
         </CLASSES>
         <JAVADOC />
-        <SOURCES />
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/watchmaker-framework-0.7.1-sources.jar!/" />
+        </SOURCES>
       </library>
     </orderEntry>
+    <orderEntry type="library" name="watchmaker-framework-0.7.1-sources" level="project" />
   </component>
 </module>

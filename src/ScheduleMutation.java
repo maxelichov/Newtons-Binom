@@ -6,11 +6,18 @@ import java.util.Random;
 //todo
 public class ScheduleMutation implements EvolutionaryOperator<Schedule> {
     public ScheduleMutation(Probability probability, Probability probability1) {
+        System.out.println("    public ScheduleMutation(Probability probability, Probability probability1) {");
     }
 
     @Override
     public List<Schedule> apply(List<Schedule> list, Random random) {
-
-        return null;
+        System.out.println("    public List<Schedule> apply(List<Schedule> list, Random random) {");
+        for(int i=0;i<list.size();i++){
+            List<Course> temp=list.get(i).getCourses();
+            for(int j=0;j<temp.size();j++){
+                temp.get(j).setCredits(random.nextInt(10));
+            }
+        }
+        return list;
     }
 }

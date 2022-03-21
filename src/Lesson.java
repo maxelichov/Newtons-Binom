@@ -1,5 +1,8 @@
 import java.time.DayOfWeek;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Date;
+
 
 public class Lesson implements Cloneable{
     private DayOfWeek day;
@@ -11,6 +14,7 @@ public class Lesson implements Cloneable{
         this.day=day;
         this.startTime=startTime;
         this.endTime=endTime;
+
     }
 
 

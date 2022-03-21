@@ -13,6 +13,7 @@ public class ScheduleCrossover extends AbstractCrossover<Schedule> {
 
     @Override
     protected List<Schedule> mate(Schedule schedule1, Schedule schedule2, int crossover, Random random) {
+
         List<Schedule> children=new ArrayList<Schedule>();
         //4     2-2
         //5     2-3
@@ -33,7 +34,6 @@ public class ScheduleCrossover extends AbstractCrossover<Schedule> {
         children.add(cloneSchedule1);
         children.add(cloneSchedule2);
 
-        System.out.println(children);
         return children;
     }
 

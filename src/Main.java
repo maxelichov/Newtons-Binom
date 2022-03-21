@@ -7,6 +7,7 @@ import org.uncommons.watchmaker.framework.SelectionStrategy;
 import org.uncommons.watchmaker.framework.operators.EvolutionPipeline;
 import org.uncommons.watchmaker.framework.selection.RouletteWheelSelection;
 import org.uncommons.watchmaker.framework.termination.ElapsedTime;
+import org.uncommons.watchmaker.framework.termination.GenerationCount;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,13 +15,6 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        // Define the set of permitted characters (A-Z plus space).
-        char[] chars = new char[27];
-        for (char c = 'A'; c <= 'Z'; c++)
-        {
-            chars[c - 'A'] = c;
-        }
-        chars[26] = ' ';
 
 // Factory for random 11-character Strings.
 	// write your code here
@@ -48,13 +42,13 @@ public class Main {
         engine.setSingleThreaded(false);
 
         // Display the health of each generation
-        engine.addEvolutionObserver(new ScheduleObserver());
+        //engine.addEvolutionObserver(new ScheduleObserver());
 
 
         // Go!
         Schedule winningStrat = engine.evolve(10, // individuals per generation
                 0, // Elites per generation
-                new ElapsedTime(100));
+                new GenerationCount(10));
         /*
         // Go!
         Schedule winningStrat = engine.evolve(10, // individuals per generation

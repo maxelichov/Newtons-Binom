@@ -4,8 +4,9 @@ import java.util.List;
 
 public class Course implements Cloneable{
     String courseName;
-
     double credits;
+
+    /*
     float difficulty;
     List<Group> groups = new ArrayList<Group>();
     Date testA;
@@ -19,6 +20,8 @@ public class Course implements Cloneable{
         this.testA = testA;
         this.testB = testB;
     }
+
+     */
 
 
 
@@ -38,18 +41,15 @@ public class Course implements Cloneable{
         return "Course{" +
                 "courseName='" + courseName + '\'' +
                 ", credits=" + credits +
-                ", difficulty=" + difficulty +
-                ", groups=" + groups +
-                ", testA=" + testA +
-                ", testB=" + testB +
                 '}';
     }
-
-
 
     public Course(String s, int i) {
         this.courseName = s;
         this.credits=i;
     }
 
+    public void setCredits(int i) {
+        credits=i;
+    }
 }
