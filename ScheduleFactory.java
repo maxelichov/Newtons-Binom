@@ -1,9 +1,11 @@
 import org.uncommons.watchmaker.framework.CandidateFactory;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Random;
+
+
+
 
 public class ScheduleFactory implements CandidateFactory {
 
@@ -15,7 +17,8 @@ public class ScheduleFactory implements CandidateFactory {
 
     @Override
     public List<Schedule> generateInitialPopulation(int populationSize, Random random) {
-        List<Schedule>res=new ArrayList<Schedule>();
+
+        List<Schedule> res = new ArrayList<Schedule>();
 
         for(int i=0;i<populationSize;i++){
             List<Course> coursesList=new ArrayList<Course>();

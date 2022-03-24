@@ -1,5 +1,4 @@
 import org.uncommons.watchmaker.framework.FitnessEvaluator;
-
 import java.util.List;
 
 public class ScheduleFitnessFunction implements FitnessEvaluator<Schedule> {
