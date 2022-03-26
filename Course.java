@@ -11,6 +11,10 @@ public class Course implements Cloneable{
     private Date testB;
     private Boolean isMandatory;
 
+
+
+    public Course() {}
+
     public Course(String courseName, float credits, int difficulty, List groups, Date testA, Date testB, Boolean isMandatory) {
         this.courseName = courseName;
         this.credits = credits;
@@ -36,7 +40,28 @@ public class Course implements Cloneable{
 
     @Override
     public Object clone()throws CloneNotSupportedException{
-        return super.clone();
+
+
+        Course clonedCourse = new Course();
+        clonedCourse = (Course)super.clone();
+        List<Group> clonedGroupList = new ArrayList<Group>(this.groups.size());
+
+        for (Group group: groups) {
+
+            clonedGroupList.add((Group) group.clone());
+
+        }
+
+        clonedCourse.setGroups(clonedGroupList);
+
+        return clonedCourse;
+     //  return super.clone();
+    }
+
+    private void setGroups(List<Group> clonedGroupList) {
+
+        this.groups = clonedGroupList;
+
     }
 
     public List<Group> getGroups(){

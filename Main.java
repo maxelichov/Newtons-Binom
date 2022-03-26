@@ -23,17 +23,18 @@ public class Main {
 // Factory for random 11-character Strings.
         // write your code here
 
+
         WeekSchedule WeekSchedule= new WeekSchedule();
-        WeekSchedule.insertNewRange(Days.FRIDAY, new RangeTime(LocalTime.of(16, 00),LocalTime.of(00, 00)));
+        WeekSchedule.insertNewRange(Days.SATURDAY, new RangeTime(LocalTime.of(16, 00),LocalTime.of(00, 00)));
         WeekSchedule.insertNewRange(Days.SATURDAY, new RangeTime(LocalTime.of(00, 00),LocalTime.of(17, 00)));
-        WeekSchedule.insertNewRange(Days.WEDNESDAY, new RangeTime(LocalTime.of(7, 00),LocalTime.of(23, 59)));
+        WeekSchedule.insertNewRange(Days.SATURDAY, new RangeTime(LocalTime.of(7, 00),LocalTime.of(23, 59)));
 
-        System.out.println(WeekSchedule);
-
-
+        //System.out.println(WeekSchedule);
 
 
-        List<Course> courseList= new ArrayList<Course>();
+
+
+        List<Course> courses = new ArrayList<Course>();
 
         /*
         List<Lesson> javaLList=new ArrayList<Lesson>();
@@ -62,7 +63,7 @@ public class Main {
         computabilityGList.add(computabilityG2);
 
         Course computability=new Course("computability",4,7,computabilityGList, new Date(2022,7,13) ,new Date(2022,8,14),true);
-        courseList.add(computability);
+        courses.add(computability);
 
 
 
@@ -73,21 +74,27 @@ public class Main {
         List<Group> osGList = new ArrayList<Group>();
         osGList.add(osG);
         Course os=new Course("operation system",4,8,osGList, new Date(2022,7,27) ,new Date(2022,8,24),true);
-        courseList.add(os);
+        courses.add(os);
 
 
-        Prefernces pref=new Prefernces(10,4,courseList,30,WeekSchedule);
+        Prefernces pref =new Prefernces(10,4,courses,30,WeekSchedule);
 
         Logic logic=new Logic();
+
+        //Logic will filter all the courses that are irelevant to the user's preferences.
+
         List<Course>validCourses = logic.filterCourses(pref);
+
+        // validCourses will pass to EA Engine!
+
 
         System.out.println(validCourses);
 
-/*
-        List<Course> courses=new ArrayList<>();
-        for(int i=0;i<10;i++){
-            //courses.add(new Course("A"+i,i));
-        }
+
+//        List<Course> courses=new ArrayList<>();
+//        for(int i=0;i<10;i++){
+//            //courses.add(new Course("A"+i,i));
+//        }
 
         ArrayList<EvolutionaryOperator<Schedule>> operators = new ArrayList<EvolutionaryOperator<Schedule>>();
         operators.add(new ScheduleMutation(new Probability(.001d), new Probability(.005d)));

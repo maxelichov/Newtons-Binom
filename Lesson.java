@@ -11,7 +11,14 @@ public class Lesson implements Cloneable{
 
     @Override
     public Object clone()throws CloneNotSupportedException{
-        return super.clone();
+
+
+        //TODO: do we need to clone day and rangeTime as well?
+
+        Lesson clonedLesson = (Lesson)super.clone();
+
+        return clonedLesson;
+      //  return super.clone();
     }
 
 
