@@ -1,3 +1,5 @@
+package LOGIC;
+
 public enum Days {
 
     SUNDAY(1),

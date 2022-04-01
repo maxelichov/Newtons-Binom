@@ -1,3 +1,5 @@
+package LOGIC;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,7 +46,7 @@ public class Group implements Cloneable
 
     @Override
     public String toString() {
-        return "Group{" +
+        return "LOGIC.Group{" +
                 "lessons=" + lessons +
                 '}';
     }

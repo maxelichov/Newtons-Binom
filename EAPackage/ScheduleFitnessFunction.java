@@ -1,3 +1,7 @@
+package EAPackage;
+
+import LOGIC.Course;
+import LOGIC.Schedule;
 import org.uncommons.watchmaker.framework.FitnessEvaluator;
 import java.util.List;
 

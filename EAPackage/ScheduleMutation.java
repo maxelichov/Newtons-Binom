@@ -1,3 +1,6 @@
+package EAPackage;
+
+import LOGIC.Schedule;
 import org.uncommons.maths.random.Probability;
 import org.uncommons.watchmaker.framework.EvolutionaryOperator;
 
@@ -9,8 +12,10 @@ import java.util.Random;
 //todo
 
 public class ScheduleMutation implements EvolutionaryOperator<Schedule> {
+
+
     public ScheduleMutation(Probability probability, Probability probability1) {
-        System.out.println("    public ScheduleMutation(Probability probability, Probability probability1) {");
+        System.out.println("    public EAPackage.ScheduleMutation(Probability probability, Probability probability1) {");
     }
 
 
@@ -31,7 +36,7 @@ public class ScheduleMutation implements EvolutionaryOperator<Schedule> {
         // strategy and not on the current population
         // . Each entry in the list (not each individual - the list may contain the same individual more than once) must be operated on exactly once.
 
-        System.out.println("    public List<Schedule> apply(List<Schedule> list, Random random) {");
+
 
         List<Schedule> tmp = new ArrayList<Schedule>(list.size());
 
@@ -54,23 +59,6 @@ public class ScheduleMutation implements EvolutionaryOperator<Schedule> {
         }
 
 
-        Schedule fromTmp = tmp.get(0);
-        Schedule fromList = list.get(0);
-
-
-
-        System.out.println(fromTmp);
-        System.out.println(fromList);
-
-
-        System.out.println("going to change fromTmp");
-
-        fromTmp.removeCourse("operation system");
-
-
-
-        System.out.println(fromTmp);
-        System.out.println(fromList);
 
 
 

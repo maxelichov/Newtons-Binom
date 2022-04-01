@@ -1,3 +1,5 @@
+package LOGIC;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +24,7 @@ public class WeekSchedule {
 
     @Override
     public String toString() {
-        String res="WeekSchedule\n";
+        String res="LOGIC.WeekSchedule\n";
         for(DaySchedule day:weekSchedule) {
             res+=day.toString()+"\n";
         }

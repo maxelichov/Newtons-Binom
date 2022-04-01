@@ -1,3 +1,7 @@
+package EAPackage;
+
+import LOGIC.Course;
+import LOGIC.Schedule;
 import org.uncommons.maths.random.Probability;
 import org.uncommons.watchmaker.framework.operators.AbstractCrossover;
 import java.util.ArrayList;

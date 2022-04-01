@@ -1,3 +1,5 @@
+package LOGIC;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -99,7 +101,7 @@ public class Course implements Cloneable{
 
     @Override
     public String toString() {
-        return "Course{" +
+        return "LOGIC.Course{" +
                 "courseName='" + courseName + '\'' +
                 ", groups=" + groups +
                 '}';

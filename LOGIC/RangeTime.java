@@ -1,3 +1,5 @@
+package LOGIC;
+
 import java.time.LocalTime;
 //todo: what if end time<start time
 public class RangeTime {
@@ -27,7 +29,7 @@ public class RangeTime {
 
     @Override
     public String toString() {
-        return "RangeTime{" +
+        return "LOGIC.RangeTime{" +
                 "startTime=" + startTime +
                 ", endTime=" + endTime +
                 '}';

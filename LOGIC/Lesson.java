@@ -1,3 +1,5 @@
+package LOGIC;
+
 public class Lesson implements Cloneable{
     private Days day;
     private RangeTime rangeTime;
@@ -13,7 +15,7 @@ public class Lesson implements Cloneable{
     public Object clone()throws CloneNotSupportedException{
 
 
-        //TODO: do we need to clone day and rangeTime as well?
+
 
         Lesson clonedLesson = (Lesson)super.clone();
 
@@ -24,7 +26,7 @@ public class Lesson implements Cloneable{
 
     @Override
     public String toString() {
-        return "Lesson{" +
+        return "LOGIC.Lesson{" +
                 "day=" + day +
                 ", rangeTime=" + rangeTime +
                 '}';

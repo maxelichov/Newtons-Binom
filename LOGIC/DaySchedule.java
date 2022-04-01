@@ -1,3 +1,5 @@
+package LOGIC;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +27,7 @@ public class DaySchedule {
 
     @Override
     public String toString() {
-        return "DaySchedule{" +
+        return "LOGIC.DaySchedule{" +
                 "day=" + day +
                 ", listStartEnd=" + listStartEnd +
                 '}';

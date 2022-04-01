@@ -1,3 +1,5 @@
+package EAPackage;
+
 import org.uncommons.watchmaker.framework.EvolutionObserver;
 import org.uncommons.watchmaker.framework.PopulationData;
 

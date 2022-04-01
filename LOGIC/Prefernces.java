@@ -1,3 +1,5 @@
+package LOGIC;
+
 import java.util.List;
 
 public class Prefernces {
@@ -38,4 +40,8 @@ public class Prefernces {
     public WeekSchedule getUnavailablityWeekSchedule() {
         return unavailablityWeekSchedule;
     }
+
+
+
+
 }

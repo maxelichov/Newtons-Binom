@@ -1,3 +1,5 @@
+package LOGIC;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,7 +52,7 @@ public class Schedule implements Cloneable{
 
     @Override
     public String toString() {
-        return "Schedule{" +
+        return "LOGIC.Schedule{" +
                 "courses=" + courses +
                 '}';
     }
@@ -71,7 +73,7 @@ public class Schedule implements Cloneable{
     }
 
 
-    public void printStrategy() {
+    public void printSchedule() {
         System.out.println(this.toString());
     }
 

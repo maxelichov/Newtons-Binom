@@ -1,3 +1,7 @@
+package EAPackage;
+
+import LOGIC.Course;
+import LOGIC.Schedule;
 import org.uncommons.watchmaker.framework.CandidateFactory;
 import java.util.ArrayList;
 import java.util.Collection;
