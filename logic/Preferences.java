@@ -1,19 +1,19 @@
-package LOGIC;
+package logic;
 
 import java.util.List;
 
-public class Prefernces {
+public class Preferences {
     private float intensity;
     private float minCredits;
     private List<Course> prefCourse;
     private float maxHoursForStudyingInWeek;
     private WeekSchedule unavailablityWeekSchedule;
 
-    public Prefernces(float intensity,
-                      float minCredits,
-                      List<Course> prefCourse,
-                      float maxHoursForStudyingInWeek,
-                      WeekSchedule unavailablityWeekSchedule){
+    public Preferences(float intensity,
+                       float minCredits,
+                       List<Course> prefCourse,
+                       float maxHoursForStudyingInWeek,
+                       WeekSchedule unavailablityWeekSchedule){
         this.intensity=intensity;
         this.minCredits=minCredits;
         this.prefCourse=prefCourse;

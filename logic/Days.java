@@ -1,4 +1,4 @@
-package LOGIC;
+package logic;
 
 public enum Days {
 

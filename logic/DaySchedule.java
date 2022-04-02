@@ -1,9 +1,10 @@
-package LOGIC;
+package logic;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DaySchedule {
+public class DaySchedule
+{
     private Days day;
     private List<RangeTime> listStartEnd;
 
@@ -16,7 +17,8 @@ public class DaySchedule {
         listStartEnd.add(range);
     }
 
-    public boolean isAvailabile(RangeTime rangeTime) {
+    public boolean isAvailabile(RangeTime rangeTime)
+    {
         for(RangeTime curr : listStartEnd){
             if(!curr.overlaps(rangeTime)){
                 return false;

@@ -1,20 +1,22 @@
-package LOGIC;
+package logic;
 
-import EAPackage.EAManager;
+import EA.EAManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class Logic {
+public class LogicManager
+{
 
 
-    private EAManager EAEngineManager = new EAManager();
+    private EAManager EAEngineManager;
     private List<Course> filteredCourses;
-    private Prefernces pref;
+    private Preferences pref;
 
 
-    public void filterCourses(Prefernces pref){
+    public void filterCourses(Preferences pref)
+    {
         List<Course>res=new ArrayList<Course>();
         for(Course currCourse : pref.getPrefCourse()){
             Course newCourse=new Course(currCourse.getCourseName(),currCourse.getCredits(),currCourse.getDifficulty(),currCourse.getTestA(),currCourse.getTestB(),currCourse.getMandatory());
@@ -42,11 +44,13 @@ public class Logic {
         }
 
         setFilteredCourses(res);
+        EAEngineManager  = new EAManager(res);
 
     }
 
 
-    public void setFilteredCourses(List<Course> courses) {
+    public void setFilteredCourses(List<Course> courses)
+    {
 
 
         filteredCourses = courses;
@@ -54,21 +58,19 @@ public class Logic {
 
     }
 
-    public void startEngine() {
+    public void startEngine()
+    {
 
-      EAEngineManager.initEngine(filteredCourses);
-
-
+        EAEngineManager.runEngine(filteredCourses);
 
     }
 
-public List<Course> getValidCourses() {
+    public List<Course> getValidCourses()
+    {
 
+            return this.filteredCourses;
 
-
-        return this.filteredCourses;
-
-}
+    }
 
 
 

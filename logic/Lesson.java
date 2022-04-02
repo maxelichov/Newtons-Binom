@@ -1,4 +1,4 @@
-package LOGIC;
+package logic;
 
 public class Lesson implements Cloneable{
     private Days day;

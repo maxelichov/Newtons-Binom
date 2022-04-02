@@ -1,4 +1,4 @@
-package EAPackage;
+package EA;
 
 import org.uncommons.watchmaker.framework.EvolutionObserver;
 import org.uncommons.watchmaker.framework.PopulationData;

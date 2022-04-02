@@ -1,21 +1,28 @@
-package LOGIC;
+package logic;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class Course implements Cloneable{
+
+
+
     private String courseName;
     private double credits;
     private int difficulty;
-    private List<Group> groups = new ArrayList<Group>();
+    private List<Group> groups;
     private Date testA;
     private Date testB;
     private Boolean isMandatory;
 
 
 
-    public Course() {}
+    public Course()
+    {
+
+        groups = new ArrayList<Group>();
+    }
 
     public Course(String courseName, float credits, int difficulty, List groups, Date testA, Date testB, Boolean isMandatory) {
         this.courseName = courseName;
@@ -60,11 +67,14 @@ public class Course implements Cloneable{
      //  return super.clone();
     }
 
-    private void setGroups(List<Group> clonedGroupList) {
+    public void setGroups(List<Group> groupList) {
 
-        this.groups = clonedGroupList;
+        this.groups = groupList;
 
     }
+
+
+
 
     public List<Group> getGroups(){
         return groups;
@@ -105,5 +115,9 @@ public class Course implements Cloneable{
                 "courseName='" + courseName + '\'' +
                 ", groups=" + groups +
                 '}';
+    }
+
+    public Boolean isSameName(String courseName){
+        return this.courseName.equals(courseName);
     }
 }

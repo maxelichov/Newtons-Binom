@@ -1,4 +1,4 @@
-package LOGIC;
+package logic;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,7 @@ public class Schedule implements Cloneable{
 
 
 
-   private   List<Course> courses = new ArrayList<Course>();
+   private List<Course> courses = new ArrayList<Course>();
 
 
     public Schedule(List<Course> courses){
@@ -21,9 +21,6 @@ public class Schedule implements Cloneable{
     public void setCourses(List<Course> courses) {
         this.courses = courses;
     }
-
-
-    public void Schdeule() {}
 
     @Override
     public Object clone()throws CloneNotSupportedException{
@@ -78,10 +75,22 @@ public class Schedule implements Cloneable{
     }
 
     public void removeCourse(String courseName) {
-
-        //TODO: if getCourseByName returnes null?
-
-        courses.remove(getCourseByName(courseName));
+        removeCourse(getCourseByName(courseName));
 
     }
+    public void removeCourse(Course course) {
+        courses.remove(course);
+
+    }
+
+
+    public void addCourseToSchedule(Course courseToAdd)
+    {
+
+        courses.add(courseToAdd);
+
+
+    }
+
+
 }

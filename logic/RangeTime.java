@@ -1,4 +1,4 @@
-package LOGIC;
+package logic;
 
 import java.time.LocalTime;
 //todo: what if end time<start time
