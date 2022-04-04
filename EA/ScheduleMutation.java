@@ -57,7 +57,7 @@ public class ScheduleMutation implements EvolutionaryOperator<Schedule>
 
         for(Schedule currSchedule:res)
         {
-            int num=random.nextInt(10);
+            int num=random.nextInt(100);
 
             switch (num)
             {
