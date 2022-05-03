@@ -15,9 +15,12 @@ public class ScheduleFactory implements CandidateFactory {
 
     private final List<Course> courses;
 
-    public ScheduleFactory(List<Course> courses) {
+    public ScheduleFactory(List<Course> courses)
+    {
         this.courses=courses;
     }
+
+
 
     @Override
     public List<Schedule> generateInitialPopulation(int populationSize, Random random) {

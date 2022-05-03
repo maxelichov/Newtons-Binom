@@ -28,7 +28,6 @@ public class LogicManager
                         newGroup.addLesson(currLesson);
                         flag=true;
                     }else{
-                        System.out.println("dff");
                         break;
                     }
                 }
@@ -44,7 +43,7 @@ public class LogicManager
         }
 
         setFilteredCourses(res);
-        EAEngineManager  = new EAManager(res);
+        EAEngineManager  = new EAManager(res, pref);
 
     }
 
