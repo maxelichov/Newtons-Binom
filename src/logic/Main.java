@@ -35,7 +35,7 @@ public class Main
         Group computabilityG2=new Group(computabilityLList2);
         computabilityGList.add(computabilityG2);
 
-        Course computability=new Course("computability",4,7,computabilityGList, new Date(2022,7,13) ,new Date(2022,8,14),true);
+        Course computability=new Course("computability",4,7,computabilityGList, new Date(2022,7,13) ,new Date(2022,8,21),true);
         courses.add(computability);
 
 
@@ -46,7 +46,7 @@ public class Main
         Group osG=new Group(osLList);//todo: more groups
         List<Group> osGList = new ArrayList<Group>();
         osGList.add(osG);
-        Course os=new Course("operating systems",4,8,osGList, new Date(2022,7,27) ,new Date(2022,8,24),true);
+        Course os=new Course("operating systems",4,8,osGList, new Date(2022,8,30) ,new Date(2022,9,10),true);
         courses.add(os);
 
 
@@ -57,7 +57,7 @@ public class Main
         Group javaG=new Group(javaList);//todo: more groups
         List<Group> javaGList = new ArrayList<Group>();
         javaGList.add(javaG);
-        Course java=new Course("JAVA",4,10,javaGList, new Date(2022,7,27) ,new Date(2022,8,24),true);
+        Course java=new Course("JAVA",4,10,javaGList, new Date(2022,7,17) ,new Date(2022,8,29),true);
         courses.add(java);
 
 
@@ -68,7 +68,7 @@ public class Main
         Group csharpG=new Group(csharpList);//todo: more groups
         List<Group> csharpGList = new ArrayList<Group>();
         csharpGList.add(csharpG);
-        Course csharp=new Course("CSharp",4,7,csharpGList, new Date(2022,7,27) ,new Date(2022,8,24),true);
+        Course csharp=new Course("CSharp",4,7,csharpGList, new Date(2022,7,20) ,new Date(2022,9,5),true);
         courses.add(csharp);
 
         List<Lesson> networkingL=new ArrayList<Lesson>();
@@ -139,11 +139,11 @@ public class Main
         Group workshopG = new Group(workshopL);
         List<Group> workshopGList = new ArrayList<Group>();
         complexityGList.add(workshopG);
-        Course workshop = new Course("WorkShop",6,6,dataBasesGList, new Date(2022,7,27) ,new Date(2022,8,24),true);
+        Course workshop = new Course("WorkShop",6,6,dataBasesGList, new Date(2022,7,7) ,new Date(2022,8,22),true);
         courses.add(workshop);
 
 
-        Preferences pref = new Preferences(10,4,courses,30,WeekSchedule);
+        Preferences pref = new Preferences(20,100,7,100,courses,30,30,WeekSchedule);
 
 
         logicManager.filterCourses(pref);

@@ -47,6 +47,8 @@ public class Course implements Cloneable{
     }
 
 
+
+
     @Override
     public Object clone()throws CloneNotSupportedException{
 
@@ -74,6 +76,46 @@ public class Course implements Cloneable{
     }
 
 
+
+
+
+    public boolean compareLessonsInCourses(Course course)//if there have range time overLaps with two lessons from different courses
+    {
+
+        List<Lesson> lessons = getAllLessons(this);
+        List<Lesson> otherLesson = getAllLessons(course);
+
+
+        for(Lesson lesson1:lessons){
+            for(Lesson lesson2:otherLesson){
+                RangeTime rangeTime1 = lesson1.getRangeTime();
+                RangeTime rangeTime2 = lesson2.getRangeTime();
+                if(rangeTime1.overlaps(rangeTime2)){
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    private List<Lesson> getAllLessons(Course course)
+    {
+        List<Lesson> res=new ArrayList<Lesson>();
+        for(Group group: course.getGroups())
+        {
+
+
+            for (Lesson lesson: group.getLessons())
+            {
+                res.add(lesson);
+
+            }
+
+
+        }
+        return res;
+    }
 
 
     public List<Group> getGroups(){
