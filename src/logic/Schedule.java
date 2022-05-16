@@ -13,6 +13,7 @@ public class Schedule implements Cloneable{
    private double finalFitnessScore = 0;
    private double finalFitnessCreditPoints = 0;
    private double finalLessonsOverlapingFitnessPoints = 0;
+   private double finalRepeatingCoursesFitneesScore = 0;
 
 
     public Schedule(List<Course> courses){
@@ -125,5 +126,11 @@ public class Schedule implements Cloneable{
     public void setLessonsOverlapingFitnessScore(double overlapTimeLessonsFitnessScore)
     {
         this.finalLessonsOverlapingFitnessPoints = overlapTimeLessonsFitnessScore;
+    }
+
+    public void setRepeatingCoursesFitnessScore(double repeatingCoursesFitneesScore)
+    {
+        this.finalRepeatingCoursesFitneesScore = repeatingCoursesFitneesScore;
+
     }
 }

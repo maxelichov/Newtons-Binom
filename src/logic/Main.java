@@ -143,7 +143,7 @@ public class Main
         courses.add(workshop);
 
 
-        Preferences pref = new Preferences(20,100,7,100,courses,30,30,WeekSchedule);
+        Preferences pref = new Preferences(25,100,7,100,courses,40,100,WeekSchedule);
 
 
         logicManager.filterCourses(pref);

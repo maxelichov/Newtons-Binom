@@ -98,7 +98,7 @@ public class EAManager
 
         winningSchedule = engine.evolve(10, // individuals per generation
                 0, // Elites per generation
-                new GenerationCount(30));
+                new GenerationCount(100));
 
             // Go!
     //    winningSchedule = engine.evolve(4, // individuals per generation
