@@ -20,11 +20,12 @@ public class ScheduleFitnessFunction implements FitnessEvaluator<Schedule>
     @Override
     public double getFitness(Schedule candidate, List<? extends Schedule> list)
     {
-        double finalFitnessScore = 0;
+        double finalFitnessScore = 100;
 
         double testsSpacingFitnessScore = 0;
         double intestinyFitnessScore = 0;
         double creditPointFitnessScore = 0;
+        double repeatingCoursesFitneesScore = 0;
 
         List<Date> ATests = insertSortAtest(candidate.getCourses());
         List<Date> BTests = insertSortBtest(candidate.getCourses());
@@ -40,15 +41,15 @@ public class ScheduleFitnessFunction implements FitnessEvaluator<Schedule>
         finalFitnessScore += testsSpacingFitnessScore;
 
 
-        intestinyFitnessScore = evaluateSchduleIntensity(candidate);
+        intestinyFitnessScore = evaluateSchduleIntensity(candidate)* preferences.getPercentageIntensity()/100;
         candidate.setIntensityFitnessScore(intestinyFitnessScore);
-        finalFitnessScore += intestinyFitnessScore * preferences.getPercentageIntensity()/100;
+        finalFitnessScore += intestinyFitnessScore;
 
 
 
-        creditPointFitnessScore = evaluateSchdulePointFitnessScore(candidate);
+        creditPointFitnessScore = evaluateSchdulePointFitnessScore(candidate) * preferences.getPercentageMinCredits()/100;
         candidate.setPointFitnessScore(creditPointFitnessScore);
-        finalFitnessScore += intestinyFitnessScore * preferences.getPercentageMinCredits()/100;
+        finalFitnessScore += creditPointFitnessScore ;
 
 
         double overlapTimeLessonsFitnessScore = evaluateOverLapingLessonsFitnessScore(candidate);
@@ -56,9 +57,38 @@ public class ScheduleFitnessFunction implements FitnessEvaluator<Schedule>
         finalFitnessScore += overlapTimeLessonsFitnessScore;
 
 
+        repeatingCoursesFitneesScore = repeatingCoursesFintnessScore(candidate);
+        candidate.setRepeatingCoursesFitnessScore(repeatingCoursesFitneesScore);
+        finalFitnessScore += repeatingCoursesFitneesScore;
+
+
+        if(finalFitnessScore < 0)
+        {
+            finalFitnessScore = 0;
+        }
 
         candidate.setFinalFitnessScore(finalFitnessScore);
+
+
+        System.out.println(finalFitnessScore);
+
         return   finalFitnessScore;
+
+    }
+
+    private double repeatingCoursesFintnessScore(Schedule candidate)
+    {
+
+        Set<String> courseNames = new HashSet<String >();
+
+        for(Course course: candidate.getCourses())
+        {
+
+            courseNames.add(course.getCourseName());
+
+        }
+
+        return (candidate.getCourses().size() - courseNames.size()) *-30;
 
     }
 
@@ -105,9 +135,16 @@ public class ScheduleFitnessFunction implements FitnessEvaluator<Schedule>
 
         if(totalScheduleDifficulty > preferences.getIntensity())
         {
-           totalScheduleDifficulty = (int)(totalScheduleDifficulty - preferences.getIntensity()) *-2; //consider to punish!.
+            totalScheduleDifficulty = (int)(totalScheduleDifficulty - preferences.getIntensity()) *-2; //consider to punish!.
         }
 
+
+        //what if he gets a realy easy schedule? should we punish?
+
+        /*if(totalScheduleDifficulty < 0)
+        {
+            totalScheduleDifficulty = 0;
+        }*/
 
         return  totalScheduleDifficulty;
     }
@@ -122,20 +159,21 @@ public class ScheduleFitnessFunction implements FitnessEvaluator<Schedule>
         for(int i=0;i<dateList.size()-1; i++){
             difference = (dateList.get(i+1).getTime() - dateList.get(i).getTime());
 
-          double resultFromMathFunc =  arctanXdiv3(TimeUnit.MILLISECONDS.toDays(difference));
+            double resultFromMathFunc =  arctanXdiv3(TimeUnit.MILLISECONDS.toDays(difference));
 
+            resultFromMathFunc /= dateList.size();
 
           res+=resultFromMathFunc;
         }
 
 
-        System.out.println(res);
+
         return res;
     }
 
     private double arctanXdiv3(long difference)
     {
-        return 16* Math.atan(difference/3);
+        return 50* Math.atan(difference/3);
     }
 
     private List<Date> insertSortAtest(List<Course> courses)
