@@ -10,6 +10,8 @@ import org.uncommons.watchmaker.framework.GenerationalEvolutionEngine;
 import org.uncommons.watchmaker.framework.operators.EvolutionPipeline;
 import org.uncommons.watchmaker.framework.selection.RouletteWheelSelection;
 import org.uncommons.watchmaker.framework.termination.GenerationCount;
+
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -105,6 +107,7 @@ public class EAManager
     //                0, // Elites per generation
     //                new ElapsedTime(100));
 
+        engine.addEvolutionObserver(new ScheduleObserver());
 
         winningSchedule.printSchedule();
              // Display the health of each generation

@@ -10,7 +10,7 @@ public class Main
 
     public static void main(String[] args)
     {
-
+        System.out.println("hids");
         LogicManager logicManager = new LogicManager();
 
         WeekSchedule WeekSchedule= new WeekSchedule();
@@ -143,7 +143,7 @@ public class Main
         courses.add(workshop);
 
 
-        Preferences pref = new Preferences(25,100,7,100,courses,40,100,WeekSchedule);
+        Preferences pref = new Preferences(25,100,15,100,courses,40,100,WeekSchedule);
 
 
         logicManager.filterCourses(pref);

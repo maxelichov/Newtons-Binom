@@ -11,15 +11,24 @@ import java.util.concurrent.TimeUnit;
 public class ScheduleFitnessFunction implements FitnessEvaluator<Schedule>
 {
     Preferences preferences;
-
+    int generation;
+    int indexForGeneration;
     public ScheduleFitnessFunction(Preferences preferences)
     {
         this.preferences = preferences;
+        generation=0;
+        indexForGeneration=0;
     }
 
     @Override
     public double getFitness(Schedule candidate, List<? extends Schedule> list)
     {
+        indexForGeneration++;
+        if(indexForGeneration%list.size() == list.size()-1){
+            generation++;
+            System.out.println("*****************************");
+            indexForGeneration=0;
+        }
         double finalFitnessScore = 100;
 
         double testsSpacingFitnessScore = 0;
@@ -57,7 +66,7 @@ public class ScheduleFitnessFunction implements FitnessEvaluator<Schedule>
         finalFitnessScore += overlapTimeLessonsFitnessScore;
 
 
-        repeatingCoursesFitneesScore = repeatingCoursesFintnessScore(candidate);
+        repeatingCoursesFitneesScore = repeatingCoursesFitnessScore(candidate);
         candidate.setRepeatingCoursesFitnessScore(repeatingCoursesFitneesScore);
         finalFitnessScore += repeatingCoursesFitneesScore;
 
@@ -76,9 +85,9 @@ public class ScheduleFitnessFunction implements FitnessEvaluator<Schedule>
 
     }
 
-    private double repeatingCoursesFintnessScore(Schedule candidate)
+    private double repeatingCoursesFitnessScore(Schedule candidate)
     {
-
+        double res=0;
         Set<String> courseNames = new HashSet<String >();
 
         for(Course course: candidate.getCourses())
@@ -88,8 +97,29 @@ public class ScheduleFitnessFunction implements FitnessEvaluator<Schedule>
 
         }
 
-        return (candidate.getCourses().size() - courseNames.size()) *-30;
+        res= (candidate.getCourses().size() - courseNames.size()) * (-generation);
+        /*
+        if(candidate.getCourses().size() != courseNames.size()){
+            res=candidate.getCourses().size() - courseNames.size()*-30 - generation;
+        }else{
+            res = evaluateByCourseType(candidate);
+        }
 
+         */
+        return res;
+
+    }
+
+    private double evaluateByCourseType(Schedule candidate) {
+        double res=0;
+        for (Course course: candidate.getCourses()) {
+            if(course.getMandatory()){
+                res +=10;
+            }else{
+                res +=20;
+            }
+        }
+        return res;
     }
 
     private double evaluateOverLapingLessonsFitnessScore(Schedule schedule)
@@ -99,7 +129,7 @@ public class ScheduleFitnessFunction implements FitnessEvaluator<Schedule>
             for(Course course2:coursess){
                 if(!course1.equals(course2)){
                     if(course1.compareLessonsInCourses(course2)){
-                        return 0;
+                        return - generation;
                     }
                 }
             }
@@ -115,7 +145,7 @@ public class ScheduleFitnessFunction implements FitnessEvaluator<Schedule>
         }
 
         if(totalCredits<preferences.getMinCredits()){
-            return 0;
+            return (totalCredits - preferences.getMinCredits()) * 10;
         }else {
             return 10;
         }

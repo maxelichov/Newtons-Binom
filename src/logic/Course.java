@@ -154,8 +154,8 @@ public class Course implements Cloneable{
 
     @Override
     public String toString() {
-        return "LOGIC.Course{" +
-                "courseName='" + courseName + '\'' +
+        return "LOGIC.Course{" + "\n"+
+                "courseName='" + courseName + '\'' + "\n" +
                 ", groups=" + groups +
                 '}';
     }
