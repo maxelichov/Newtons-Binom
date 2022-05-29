@@ -1,23 +1,22 @@
 package EA;
 
 import logic.Course;
+import logic.Group;
 import logic.Schedule;
 import org.uncommons.watchmaker.framework.CandidateFactory;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Random;
 
-
+import java.util.*;
 
 
 public class ScheduleFactory implements CandidateFactory {
 
     private final List<Course> courses;
+    private final List<Course> mustHaveCourses;
 
-    public ScheduleFactory(List<Course> courses)
+    public ScheduleFactory(List<Course> courses, List<Course> mustHaveCourses)
     {
         this.courses=courses;
+        this.mustHaveCourses=mustHaveCourses;
     }
 
 
@@ -27,34 +26,71 @@ public class ScheduleFactory implements CandidateFactory {
 
         List<Schedule> res = new ArrayList<Schedule>();
 
+
+
         for(int i=0;i<populationSize;i++){
-            List<Course> coursesList=new ArrayList<Course>();
-            for(int j=0;j<6;j++){
-                Course temp=courses.get(random.nextInt(courses.size()));
-                if(!coursesList.contains(temp)){
-                    coursesList.add(temp);
-                }
-            }
+            List<Course> coursesList = new ArrayList<Course>();
+
+
+            //handleMustHaveCourses(coursesList);
+
+            handleRandomCourses(random, coursesList);
+
             res.add(new Schedule(coursesList));
+
         }
         return res;
     }
 
-    @Override
-    public List generateInitialPopulation(int populationSize, Collection collection, Random random) {
-        List<Schedule>res=new ArrayList<Schedule>();
-
-        for(int i=0;i<populationSize;i++){
-            List<Course> coursesList=new ArrayList<Course>();
-            for(int j=0;j<6;j++){
-                Course temp=courses.get(random.nextInt(courses.size()));
-                if(!coursesList.contains(temp)){
-                    coursesList.add(temp);
+    private void handleRandomCourses(Random random, List<Course> coursesList) {
+        for(int j=0 ; j<4 ; j++){
+            Course temp=courses.get(random.nextInt(courses.size()));
+            Course newCourse = cloneCourseWithOnlyOneGroup(temp);
+            if(newCourse != null){
+                if(!coursesList.contains(newCourse)){
+                    coursesList.add(newCourse);
                 }
+            }else {
+                //todo throw exception
+                System.out.println("Something Went wrong!");
             }
-            res.add(new Schedule(coursesList));
         }
-        return res;
+    }
+
+    private void handleMustHaveCourses(List<Course> coursesList) {
+        for(Course mustHaveCourse : mustHaveCourses){
+            Course newCourse = cloneCourseWithOnlyOneGroup(mustHaveCourse);
+            if(newCourse != null){
+                coursesList.add(newCourse);
+            }else{
+                //todo throw exception
+                System.out.println("Something Went wrong!");
+            }
+        }
+    }
+
+
+    private Course cloneCourseWithOnlyOneGroup(Course course) {
+
+        //get all courses that wasn't in
+        Random random = new Random();
+        int randIndexForGroup = random.nextInt(course.getGroups().size());
+        Course newCourse = null;
+            try {
+                newCourse = (Course) course.clone();
+                List<Group> newGroup = Arrays.asList(newCourse.getGroups().get(randIndexForGroup));
+                newCourse.setGroups(newGroup);
+            } catch (CloneNotSupportedException e) {
+                e.printStackTrace();
+            }
+        return newCourse;
+
+    }
+
+
+    @Override
+    public List<Schedule> generateInitialPopulation(int populationSize, Collection collection, Random random) {
+        return generateInitialPopulation(populationSize, random);
     }
 
     @Override

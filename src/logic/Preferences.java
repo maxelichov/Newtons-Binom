@@ -1,5 +1,6 @@
 package logic;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public  class Preferences
@@ -13,12 +14,14 @@ public  class Preferences
     private List<Course> prefCourse;
     private float maxHoursForStudyingInWeek;
     private WeekSchedule unavailablityWeekSchedule;
+    private List<Course> mustHaveCourses;
 
     public Preferences(float intensity, int percentageIntensity,
                        float minCredits, int percentageMinCredits,
                        List<Course> prefCourse,
                        float maxHoursForStudyingInWeek, int percentageMaxHoursForStudyingInWeek,
-                       WeekSchedule unavailablityWeekSchedule){
+                       WeekSchedule unavailablityWeekSchedule,
+                       List<Course> mustHaveCourses){
         if(!(0<=percentageIntensity && percentageIntensity<=100
         && 0<=percentageMinCredits && percentageMinCredits<=100
         && 0<=percentageMaxHoursForStudyingInWeek && percentageMaxHoursForStudyingInWeek<=100 )){
@@ -32,6 +35,12 @@ public  class Preferences
         this.percentageIntensity=percentageIntensity;
         this.percentageMinCredits=percentageMinCredits;
         this.percentageMaxHoursForStudyingInWeek=percentageMaxHoursForStudyingInWeek;
+
+        if(mustHaveCourses==null){
+            this.mustHaveCourses=new ArrayList<Course>();
+        }else{
+            this.mustHaveCourses=mustHaveCourses;
+        }
     }
 
     public float getIntensity() {
@@ -67,5 +76,9 @@ public  class Preferences
     public int getPercentageMinCredits()
     {
         return percentageMinCredits;
+    }
+
+    public List<Course> getMustHaveCourses() {
+        return mustHaveCourses;
     }
 }

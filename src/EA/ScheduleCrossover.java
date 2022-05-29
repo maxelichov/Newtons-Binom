@@ -1,24 +1,34 @@
 package EA;
 
 import logic.Course;
+import logic.Group;
 import logic.Schedule;
 import org.uncommons.maths.random.Probability;
 import org.uncommons.watchmaker.framework.operators.AbstractCrossover;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+
+import java.util.*;
 
 //todo
 public class ScheduleCrossover extends AbstractCrossover<Schedule> {
-    public ScheduleCrossover(Probability probability) {
+    private final List<Course> mustHaveCourses;
+
+    public ScheduleCrossover(Probability probability, List<Course>mustHaveCourses) {
         super(31,probability);
+        this.mustHaveCourses=mustHaveCourses;
     }
 
 
     @Override
     protected List<Schedule> mate(Schedule schedule1, Schedule schedule2, int crossover, Random random) {
-        List<Schedule> children = new ArrayList<Schedule>();
+        List<Schedule> children;
+
+/*
+        List<Course> mustHaveCoursesSchedule1=schedule1.removeCourses(mustHaveCourses);
+        List<Course> mustHaveCoursesSchedule2=schedule2.removeCourses(mustHaveCourses);
+
+
+ */
+
 
         switch (random.nextInt(2)) {
             case 0: {
@@ -29,10 +39,26 @@ public class ScheduleCrossover extends AbstractCrossover<Schedule> {
                 children = crossOverStrategy2(schedule1, schedule2, random);
                 break;
             }
+            default:
+                throw new IllegalStateException("Unexpected value: " + random.nextInt(2));
         }
 
+        /*
+        schedule1.addCoursess(mustHaveCoursesSchedule1);
+        schedule2.addCoursess(mustHaveCoursesSchedule2);
+
+
+
+
+        children.get(0).addCoursess(mustHaveCoursesSchedule1);
+        children.get(1).addCoursess(mustHaveCoursesSchedule2);
+
+
+         */
         return children;
     }
+
+
 
     //this method take all parent's courses randomize divides for 2 children such that:
     //The number of courses of child 1 is the same as the number of courses of parent 1
@@ -60,7 +86,7 @@ public class ScheduleCrossover extends AbstractCrossover<Schedule> {
 
     //this method take all parent's courses and randomize give half foreach child
     private List<Schedule> crossOverStrategy1(Schedule schedule1, Schedule schedule2, Random random) {
-        ArrayList<Schedule> children = new ArrayList<Schedule>();
+        List<Schedule> children = new ArrayList<Schedule>();
 
         List<Course> allCourses=new ArrayList<Course>();
         allCourses.addAll(schedule1.getCourses());

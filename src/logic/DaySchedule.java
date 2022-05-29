@@ -6,21 +6,21 @@ import java.util.List;
 public class DaySchedule
 {
     private Days day;
-    private List<RangeTime> listStartEnd;
+    private List<TimeRange> listStartEnd;
 
     public DaySchedule(Days day){
-        listStartEnd=new ArrayList<RangeTime>();
+        listStartEnd=new ArrayList<TimeRange>();
         this.day=day;
     }
 
-    public void addRangeToDay(RangeTime range){
+    public void addRangeToDay(TimeRange range){
         listStartEnd.add(range);
     }
 
-    public boolean isAvailabile(RangeTime rangeTime)
+    public boolean isAvailabile(TimeRange timeRange)
     {
-        for(RangeTime curr : listStartEnd){
-            if(!curr.overlaps(rangeTime)){
+        for(TimeRange curr : listStartEnd){
+            if(!curr.overlaps(timeRange)){
                 return false;
             }
         }

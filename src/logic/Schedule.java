@@ -12,8 +12,9 @@ public class Schedule implements Cloneable{
    private double intensityFitnessScore = 0;
    private double finalFitnessScore = 0;
    private double finalFitnessCreditPoints = 0;
-   private double finalLessonsOverlapingFitnessPoints = 0;
-   private double finalRepeatingCoursesFitneesScore = 0;
+   private double finalLessonsOverlappingFitnessPoints = 0;
+   private double finalRepeatingCoursesFitnessScore = 0;
+   private double mustHaveCoursesFitnessScore=0;
 
 
     public Schedule(List<Course> courses){
@@ -53,7 +54,7 @@ public class Schedule implements Cloneable{
     }
 
 
-    public void setExamsfitnessScore(double fitnessScore)
+    public void setExamsFitnessScore(double fitnessScore)
     {
         this.examsfitnessScore = fitnessScore;
     }
@@ -123,14 +124,40 @@ public class Schedule implements Cloneable{
 
     }
 
-    public void setLessonsOverlapingFitnessScore(double overlapTimeLessonsFitnessScore)
+    public void setLessonsOverlappingFitnessScore(double finalLessonsOverlappingFitnessPoints)
     {
-        this.finalLessonsOverlapingFitnessPoints = overlapTimeLessonsFitnessScore;
+        this.finalLessonsOverlappingFitnessPoints = finalLessonsOverlappingFitnessPoints;
     }
 
-    public void setRepeatingCoursesFitnessScore(double repeatingCoursesFitneesScore)
+    public void setRepeatingCoursesFitnessScore(double finalRepeatingCoursesFitnessScore)
     {
-        this.finalRepeatingCoursesFitneesScore = repeatingCoursesFitneesScore;
+        this.finalRepeatingCoursesFitnessScore = finalRepeatingCoursesFitnessScore;
 
+    }
+
+    public List<Course> removeCourses(List<Course> mustHaveCourses) {
+        List<Course> res = new ArrayList<Course>();
+        for(Course mustHaveCourse : mustHaveCourses){
+            for(Course course : courses){
+                if(course.isSameName(mustHaveCourse.getCourseName())){
+                    res.add(course);
+                }
+            }
+        }
+
+        for(Course course : res){
+            removeCourse(course);
+        }
+        return res;
+    }
+
+    public void addCoursess(List<Course> courses) {
+        for(Course curr : courses){
+            addCourseToSchedule(curr);
+        }
+    }
+
+    public void setMustHaveCourseCoursesFitnessScore(double mustHaveCoursesFitnessScore) {
+        this.mustHaveCoursesFitnessScore=mustHaveCoursesFitnessScore;
     }
 }

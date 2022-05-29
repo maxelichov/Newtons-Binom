@@ -36,8 +36,8 @@ public class EAManager
         preferences = pref;
         courses=new ArrayList<Course>(filteredCourses.size());
         cloneAndSetCourses(filteredCourses);
-        scheduleMutation = new ScheduleMutation(new Probability(.001d), new Probability(.005d),courses);
-        scheduleCrossover = new ScheduleCrossover(new Probability(.9d));
+        scheduleMutation = new ScheduleMutation(new Probability(.001d), new Probability(.005d),courses, pref.getMustHaveCourses());
+        scheduleCrossover = new ScheduleCrossover(new Probability(.9d), pref.getMustHaveCourses());
     }
 
 
@@ -80,7 +80,7 @@ public class EAManager
 
         initOperators();
         engine = new GenerationalEvolutionEngine<Schedule>(
-                new ScheduleFactory(courses),
+                new ScheduleFactory(courses, preferences.getMustHaveCourses()),
                 pipeline,
                 new ScheduleFitnessFunction(preferences),
                 new RouletteWheelSelection(),
@@ -100,7 +100,7 @@ public class EAManager
 
         winningSchedule = engine.evolve(10, // individuals per generation
                 0, // Elites per generation
-                new GenerationCount(100));
+                new GenerationCount(150));
 
             // Go!
     //    winningSchedule = engine.evolve(4, // individuals per generation

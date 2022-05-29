@@ -2,11 +2,11 @@ package logic;
 
 import java.time.LocalTime;
 //todo: what if end time<start time
-public class RangeTime {
+public class TimeRange {
     private LocalTime startTime;// = LocalTime.of(12, 20);
     private LocalTime endTime;// = LocalTime.of(12, 20);
 
-    public RangeTime(LocalTime startTime, LocalTime endTime){
+    public TimeRange(LocalTime startTime, LocalTime endTime){
         this.startTime=startTime;
         this.endTime=endTime;
     }
@@ -19,8 +19,8 @@ public class RangeTime {
         return endTime;
     }
 
-    public boolean overlaps(RangeTime rangeTime) {
-        if(rangeTime.endTime.isBefore(startTime) || rangeTime.startTime.isAfter(endTime)){
+    public boolean overlaps(TimeRange timeRange) {
+        if(timeRange.endTime.isBefore(startTime) || timeRange.startTime.isAfter(endTime)){
             return true;
         }
         return false;
@@ -29,7 +29,7 @@ public class RangeTime {
 
     @Override
     public String toString() {
-        return "LOGIC.RangeTime{" +
+        return "LOGIC.TimeRange{" +
                 "startTime=" + startTime +
                 ", endTime=" + endTime +
                 '}';

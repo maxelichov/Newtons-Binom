@@ -14,35 +14,91 @@ public class Main
         LogicManager logicManager = new LogicManager();
 
         WeekSchedule WeekSchedule= new WeekSchedule();
-        WeekSchedule.insertNewRange(Days.SATURDAY, new RangeTime(LocalTime.of(16, 00),LocalTime.of(00, 00)));
-        WeekSchedule.insertNewRange(Days.SATURDAY, new RangeTime(LocalTime.of(00, 00),LocalTime.of(17, 00)));
-        WeekSchedule.insertNewRange(Days.THURSDAY, new RangeTime(LocalTime.of(7, 00),LocalTime.of(23, 59)));
+        WeekSchedule.insertNewRange(Days.SATURDAY, new TimeRange(LocalTime.of(16, 00),LocalTime.of(00, 00)));
+        WeekSchedule.insertNewRange(Days.SATURDAY, new TimeRange(LocalTime.of(00, 00),LocalTime.of(17, 00)));
+        WeekSchedule.insertNewRange(Days.THURSDAY, new TimeRange(LocalTime.of(7, 00),LocalTime.of(23, 59)));
 
 
         List<Course> courses = new ArrayList<Course>();
 
 
         List<Lesson> computabilityLList1=new ArrayList<Lesson>();
-        computabilityLList1.add(new Lesson(Days.WEDNESDAY,new RangeTime(LocalTime.of(16,00),LocalTime.of(18,00))));
-        computabilityLList1.add(new Lesson(Days.THURSDAY,new RangeTime(LocalTime.of(16,00),LocalTime.of(19,00))));
+        computabilityLList1.add(new Lesson(Days.WEDNESDAY,new TimeRange(LocalTime.of(16,00),LocalTime.of(18,00))));
+        computabilityLList1.add(new Lesson(Days.THURSDAY,new TimeRange(LocalTime.of(16,00),LocalTime.of(19,00))));
         Group computabilityG1=new Group(computabilityLList1);
         List<Group> computabilityGList = new ArrayList<Group>();
         computabilityGList.add(computabilityG1);
 
         List<Lesson> computabilityLList2=new ArrayList<Lesson>();
-        computabilityLList2.add(new Lesson(Days.SUNDAY,new RangeTime(LocalTime.of(16,00),LocalTime.of(18,00))));
-        computabilityLList2.add(new Lesson(Days.THURSDAY,new RangeTime(LocalTime.of(16,00),LocalTime.of(19,00))));
+        computabilityLList2.add(new Lesson(Days.SUNDAY,new TimeRange(LocalTime.of(16,00),LocalTime.of(18,00))));
+        computabilityLList2.add(new Lesson(Days.THURSDAY,new TimeRange(LocalTime.of(16,00),LocalTime.of(19,00))));
         Group computabilityG2=new Group(computabilityLList2);
         computabilityGList.add(computabilityG2);
 
         Course computability=new Course("computability",4,7,computabilityGList, new Date(2022,7,13) ,new Date(2022,8,21),true);
         courses.add(computability);
 
+        /////////////////////////////////////////////////////////////////////
+
+        List<Lesson> designPatternsList1=new ArrayList<Lesson>();
+        designPatternsList1.add(new Lesson(Days.THURSDAY,new TimeRange(LocalTime.of(10,00),LocalTime.of(12,00))));
+        Group designPatternsG1=new Group(designPatternsList1);
+        List<Group> designPatternsGList = new ArrayList<Group>();
+        designPatternsGList.add(designPatternsG1);
+
+
+        Course designPatterns=new Course("design patterns",4,6,designPatternsGList, null ,null,false);
+        courses.add(designPatterns);
+
+
+        /////////////////////////////////////////////////////////////////////
+
+        /////////////////////////////////////////////////////////////////////
+
+        List<Lesson> calculus1LList1=new ArrayList<Lesson>();
+        calculus1LList1.add(new Lesson(Days.SUNDAY,new TimeRange(LocalTime.of(8,00),LocalTime.of(10,00))));
+        calculus1LList1.add(new Lesson(Days.TUESDAY,new TimeRange(LocalTime.of(11,00),LocalTime.of(2,00))));
+        Group calculus1G1=new Group(calculus1LList1);
+        List<Group> calculusGList = new ArrayList<Group>();
+        calculusGList.add(calculus1G1);
+
+        List<Lesson> calculus1LList2=new ArrayList<Lesson>();
+        calculus1LList2.add(new Lesson(Days.MONDAY,new TimeRange(LocalTime.of(9,00),LocalTime.of(11,00))));
+        calculus1LList2.add(new Lesson(Days.WEDNESDAY,new TimeRange(LocalTime.of(12,00),LocalTime.of(15,00))));
+        Group calculus1G2=new Group(calculus1LList2);
+        calculusGList.add(calculus1G2);
+
+        Course calculus1=new Course("calculus1",6,8,calculusGList, new Date(2022,8,25) ,new Date(2022,9,10),true);
+        courses.add(calculus1);
+
+
+        /////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////
+
+        List<Lesson> calculus2LList1=new ArrayList<Lesson>();
+        calculus2LList1.add(new Lesson(Days.WEDNESDAY,new TimeRange(LocalTime.of(10,00),LocalTime.of(12,00))));
+        calculus2LList1.add(new Lesson(Days.THURSDAY,new TimeRange(LocalTime.of(12,00),LocalTime.of(14,00))));
+        Group calculus2G1=new Group(calculus2LList1);
+        List<Group> calculus2GList = new ArrayList<Group>();
+        calculus2GList.add(calculus2G1);
+
+        List<Lesson> calculus2LList2=new ArrayList<Lesson>();
+        calculus2LList2.add(new Lesson(Days.SUNDAY,new TimeRange(LocalTime.of(9,00),LocalTime.of(11,00))));
+        calculus2LList2.add(new Lesson(Days.THURSDAY,new TimeRange(LocalTime.of(11,00),LocalTime.of(13,00))));
+        Group calculus2G2=new Group(calculus2LList2);
+        calculus2GList.add(calculus2G2);
+
+        Course calculus2=new Course("calculus2",5,8,calculus2GList, new Date(2022,8,23) ,new Date(2022,9,11),true);
+        courses.add(calculus2);
+
+
+        /////////////////////////////////////////////////////////////////////
+
 
 
         List<Lesson> osLList=new ArrayList<Lesson>();
-        osLList.add(new Lesson(Days.SUNDAY,new RangeTime(LocalTime.of(12,00),LocalTime.of(14,30))));
-        osLList.add(new Lesson(Days.THURSDAY,new RangeTime(LocalTime.of(13,00),LocalTime.of(15,00))));
+        osLList.add(new Lesson(Days.SUNDAY,new TimeRange(LocalTime.of(12,00),LocalTime.of(14,30))));
+        osLList.add(new Lesson(Days.THURSDAY,new TimeRange(LocalTime.of(13,00),LocalTime.of(15,00))));
         Group osG=new Group(osLList);//todo: more groups
         List<Group> osGList = new ArrayList<Group>();
         osGList.add(osG);
@@ -52,8 +108,8 @@ public class Main
 
 
         List<Lesson> javaList=new ArrayList<Lesson>();
-        javaList.add(new Lesson(Days.SUNDAY,new RangeTime(LocalTime.of(12,00),LocalTime.of(14,30))));
-        javaList.add(new Lesson(Days.WEDNESDAY,new RangeTime(LocalTime.of(13,00),LocalTime.of(15,00))));
+        javaList.add(new Lesson(Days.SUNDAY,new TimeRange(LocalTime.of(12,00),LocalTime.of(14,30))));
+        javaList.add(new Lesson(Days.WEDNESDAY,new TimeRange(LocalTime.of(13,00),LocalTime.of(15,00))));
         Group javaG=new Group(javaList);//todo: more groups
         List<Group> javaGList = new ArrayList<Group>();
         javaGList.add(javaG);
@@ -63,8 +119,8 @@ public class Main
 
 
         List<Lesson> csharpList=new ArrayList<Lesson>();
-        csharpList.add(new Lesson(Days.SUNDAY,new RangeTime(LocalTime.of(12,00),LocalTime.of(14,30))));
-        csharpList.add(new Lesson(Days.WEDNESDAY,new RangeTime(LocalTime.of(13,00),LocalTime.of(15,00))));
+        csharpList.add(new Lesson(Days.SUNDAY,new TimeRange(LocalTime.of(12,00),LocalTime.of(14,30))));
+        csharpList.add(new Lesson(Days.WEDNESDAY,new TimeRange(LocalTime.of(13,00),LocalTime.of(15,00))));
         Group csharpG=new Group(csharpList);//todo: more groups
         List<Group> csharpGList = new ArrayList<Group>();
         csharpGList.add(csharpG);
@@ -72,8 +128,8 @@ public class Main
         courses.add(csharp);
 
         List<Lesson> networkingL=new ArrayList<Lesson>();
-        networkingL.add(new Lesson(Days.SUNDAY,new RangeTime(LocalTime.of(12,00),LocalTime.of(14,30))));
-        networkingL.add(new Lesson(Days.THURSDAY,new RangeTime(LocalTime.of(13,00),LocalTime.of(15,00))));
+        networkingL.add(new Lesson(Days.SUNDAY,new TimeRange(LocalTime.of(12,00),LocalTime.of(14,30))));
+        networkingL.add(new Lesson(Days.THURSDAY,new TimeRange(LocalTime.of(13,00),LocalTime.of(15,00))));
         Group networkingG = new Group(networkingL);//todo: more groups
         List<Group> networkingGList = new ArrayList<Group>();
         networkingGList.add(networkingG);
@@ -83,13 +139,13 @@ public class Main
 
 
         List<Lesson> dataBasesL=new ArrayList<Lesson>();
-        dataBasesL.add(new Lesson(Days.SUNDAY,new RangeTime(LocalTime.of(12,00),LocalTime.of(14,30))));
-        dataBasesL.add(new Lesson(Days.FRIDAY,new RangeTime(LocalTime.of(13,00),LocalTime.of(15,00))));
+        dataBasesL.add(new Lesson(Days.SUNDAY,new TimeRange(LocalTime.of(12,00),LocalTime.of(14,30))));
+        dataBasesL.add(new Lesson(Days.FRIDAY,new TimeRange(LocalTime.of(13,00),LocalTime.of(15,00))));
 
 
         List<Lesson> dataBasesL2=new ArrayList<Lesson>();
-        dataBasesL2.add(new Lesson(Days.THURSDAY,new RangeTime(LocalTime.of(10,00),LocalTime.of(12,30))));
-        dataBasesL2.add(new Lesson(Days.WEDNESDAY,new RangeTime(LocalTime.of(14,00),LocalTime.of(16,00))));
+        dataBasesL2.add(new Lesson(Days.THURSDAY,new TimeRange(LocalTime.of(10,00),LocalTime.of(12,30))));
+        dataBasesL2.add(new Lesson(Days.WEDNESDAY,new TimeRange(LocalTime.of(14,00),LocalTime.of(16,00))));
 
 
 
@@ -108,16 +164,16 @@ public class Main
 
 
         List<Lesson> complexityL=new ArrayList<Lesson>();
-        complexityL.add(new Lesson(Days.SUNDAY,new RangeTime(LocalTime.of(12,00),LocalTime.of(14,30))));
-        complexityL.add(new Lesson(Days.FRIDAY,new RangeTime(LocalTime.of(13,00),LocalTime.of(15,00))));
+        complexityL.add(new Lesson(Days.SUNDAY,new TimeRange(LocalTime.of(12,00),LocalTime.of(14,30))));
+        complexityL.add(new Lesson(Days.FRIDAY,new TimeRange(LocalTime.of(13,00),LocalTime.of(15,00))));
 
         List<Lesson> complexityL2=new ArrayList<Lesson>();
-        complexityL.add(new Lesson(Days.MONDAY,new RangeTime(LocalTime.of(10,00),LocalTime.of(14,30))));
-        complexityL.add(new Lesson(Days.FRIDAY,new RangeTime(LocalTime.of(14,00),LocalTime.of(18,00))));
+        complexityL.add(new Lesson(Days.MONDAY,new TimeRange(LocalTime.of(10,00),LocalTime.of(14,30))));
+        complexityL.add(new Lesson(Days.FRIDAY,new TimeRange(LocalTime.of(14,00),LocalTime.of(18,00))));
 
         List<Lesson> complexityL3=new ArrayList<Lesson>();
-        complexityL.add(new Lesson(Days.THURSDAY,new RangeTime(LocalTime.of(13,20),LocalTime.of(15,40))));
-        complexityL.add(new Lesson(Days.SATURDAY,new RangeTime(LocalTime.of(17,10),LocalTime.of(19,30))));
+        complexityL.add(new Lesson(Days.THURSDAY,new TimeRange(LocalTime.of(13,20),LocalTime.of(15,40))));
+        complexityL.add(new Lesson(Days.SATURDAY,new TimeRange(LocalTime.of(17,10),LocalTime.of(19,30))));
 
         Group complexityG = new Group(complexityL);
         Group complexityG2 = new Group(complexityL2);
@@ -134,16 +190,19 @@ public class Main
 
 
         List<Lesson> workshopL=new ArrayList<Lesson>();
-        workshopL.add(new Lesson(Days.SUNDAY,new RangeTime(LocalTime.of(12,00),LocalTime.of(14,30))));
-        workshopL.add(new Lesson(Days.FRIDAY,new RangeTime(LocalTime.of(13,00),LocalTime.of(15,00))));
+        workshopL.add(new Lesson(Days.SUNDAY,new TimeRange(LocalTime.of(12,00),LocalTime.of(14,30))));
+        workshopL.add(new Lesson(Days.FRIDAY,new TimeRange(LocalTime.of(13,00),LocalTime.of(15,00))));
         Group workshopG = new Group(workshopL);
         List<Group> workshopGList = new ArrayList<Group>();
-        complexityGList.add(workshopG);
-        Course workshop = new Course("WorkShop",6,6,dataBasesGList, new Date(2022,7,7) ,new Date(2022,8,22),true);
+        workshopGList.add(workshopG);
+        Course workshop = new Course("WorkShop",6,6,workshopGList, null ,null,true);
         courses.add(workshop);
 
 
-        Preferences pref = new Preferences(25,100,15,100,courses,40,100,WeekSchedule);
+
+        List<Course> mustCourses=new ArrayList<Course>();
+        mustCourses.add(calculus1);
+        Preferences pref = new Preferences(25,100,15,100,courses,40,100,WeekSchedule,mustCourses);
 
 
         logicManager.filterCourses(pref);

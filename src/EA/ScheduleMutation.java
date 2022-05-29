@@ -17,12 +17,14 @@ public class ScheduleMutation implements EvolutionaryOperator<Schedule>
 {
 
 
+    private final List<Course> mustHaveCourses;
     private List<Course> filteredCourses;
 
 
-    public ScheduleMutation(Probability probability, Probability probability1, List<Course> courses)
+    public ScheduleMutation(Probability probability, Probability probability1, List<Course> courses , List<Course>mustHaveCourses)
     {
         filteredCourses=courses;
+        this.mustHaveCourses=mustHaveCourses;
     }
 
 
@@ -90,6 +92,7 @@ public class ScheduleMutation implements EvolutionaryOperator<Schedule>
         return res;
     }
 
+
     private void mutationChangeGroup(Schedule currSchedule)
     {
         Random rnd=new Random();
@@ -114,17 +117,35 @@ public class ScheduleMutation implements EvolutionaryOperator<Schedule>
         }
     }
 
+
+
     private void mutationChangeCourse(Schedule currSchedule)
     {
         Random rnd=new Random();
-        currSchedule.removeCourse(currSchedule.getCourses().get(rnd.nextInt(currSchedule.getCourses().size())));
-        currSchedule.addCourseToSchedule(createRandomCourseFromFilterList());
+        Course courseAboutToBeRemoved=currSchedule.getCourses().get(rnd.nextInt(currSchedule.getCourses().size()));
+        if(! isInMustHaveCourse(courseAboutToBeRemoved)){
+            currSchedule.removeCourse(courseAboutToBeRemoved);
+            currSchedule.addCourseToSchedule(createRandomCourseFromFilterList());
+        }
+
     }
 
     private void mutationRemoveCourse(Schedule currSchedule)
     {
         Random randomCourse=new Random();
-        currSchedule.removeCourse(currSchedule.getCourses().get(randomCourse.nextInt(currSchedule.getCourses().size())));
+        Course courseForRemove = currSchedule.getCourses().get(randomCourse.nextInt(currSchedule.getCourses().size()));
+        if(! isInMustHaveCourse(courseForRemove)){
+            currSchedule.removeCourse(courseForRemove);
+        }
+    }
+
+    private boolean isInMustHaveCourse(Course course) {
+        for(Course mustHaveCourse : mustHaveCourses){
+            if(course.isSameName(mustHaveCourse.getCourseName())){
+                return true;
+            }
+        }
+        return false;
     }
 
     private void mutationAddCourse(Schedule currSchedule)

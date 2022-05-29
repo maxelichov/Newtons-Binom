@@ -2,12 +2,12 @@ package logic;
 
 public class Lesson implements Cloneable{
     private Days day;
-    private RangeTime rangeTime;
+    private TimeRange timeRange;
 
 
-    public Lesson(Days day, RangeTime rangeTime){
+    public Lesson(Days day, TimeRange timeRange){
         this.day=day;
-        this.rangeTime=rangeTime;
+        this.timeRange = timeRange;
     }
 
 
@@ -28,7 +28,7 @@ public class Lesson implements Cloneable{
     public String toString() {
         return "LOGIC.Lesson{" +
                 "day=" + day +
-                ", rangeTime=" + rangeTime +
+                ", timeRange=" + timeRange +
                 '}';
     }
 
@@ -36,7 +36,7 @@ public class Lesson implements Cloneable{
         return day;
     }
 
-    public RangeTime getRangeTime() {
-        return rangeTime;
+    public TimeRange getRangeTime() {
+        return timeRange;
     }
 }

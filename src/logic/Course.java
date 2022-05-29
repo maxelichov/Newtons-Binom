@@ -3,6 +3,7 @@ package logic;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 public class Course implements Cloneable{
 
@@ -38,10 +39,9 @@ public class Course implements Cloneable{
         this.courseName = courseName;
         this.credits = credits;
         this.difficulty = difficulty;
-        this.groups = groups;
         this.testA = testA;
         this.testB = testB;
-        this.isMandatory=isMandatory;
+        this.isMandatory=mandatory;
 
         groups=new ArrayList<Group>();
     }
@@ -89,9 +89,9 @@ public class Course implements Cloneable{
 
         for(Lesson lesson1:lessons){
             for(Lesson lesson2:otherLesson){
-                RangeTime rangeTime1 = lesson1.getRangeTime();
-                RangeTime rangeTime2 = lesson2.getRangeTime();
-                if(rangeTime1.overlaps(rangeTime2)){
+                TimeRange timeRange1 = lesson1.getRangeTime();
+                TimeRange timeRange2 = lesson2.getRangeTime();
+                if(timeRange1.overlaps(timeRange2)){
                     return true;
                 }
             }
@@ -162,5 +162,18 @@ public class Course implements Cloneable{
 
     public Boolean isSameName(String courseName){
         return this.courseName.equals(courseName);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Course course = (Course) o;
+        return Double.compare(course.credits, credits) == 0 && difficulty == course.difficulty && courseName.equals(course.courseName) && Objects.equals(testA, course.testA) && Objects.equals(testB, course.testB) && isMandatory.equals(course.isMandatory);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(courseName, credits, difficulty, testA, testB, isMandatory);
     }
 }
