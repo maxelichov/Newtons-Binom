@@ -22,12 +22,12 @@ public class ScheduleCrossover extends AbstractCrossover<Schedule> {
     protected List<Schedule> mate(Schedule schedule1, Schedule schedule2, int crossover, Random random) {
         List<Schedule> children;
 
-/*
+
         List<Course> mustHaveCoursesSchedule1=schedule1.removeCourses(mustHaveCourses);
         List<Course> mustHaveCoursesSchedule2=schedule2.removeCourses(mustHaveCourses);
 
 
- */
+
 
 
         switch (random.nextInt(2)) {
@@ -43,7 +43,7 @@ public class ScheduleCrossover extends AbstractCrossover<Schedule> {
                 throw new IllegalStateException("Unexpected value: " + random.nextInt(2));
         }
 
-        /*
+
         schedule1.addCoursess(mustHaveCoursesSchedule1);
         schedule2.addCoursess(mustHaveCoursesSchedule2);
 
@@ -54,7 +54,7 @@ public class ScheduleCrossover extends AbstractCrossover<Schedule> {
         children.get(1).addCoursess(mustHaveCoursesSchedule2);
 
 
-         */
+
         return children;
     }
 

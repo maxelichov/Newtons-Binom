@@ -98,8 +98,8 @@ public class EAManager
 
         Schedule winningSchedule;
 
-        winningSchedule = engine.evolve(10, // individuals per generation
-                0, // Elites per generation
+        winningSchedule = engine.evolve(50, // individuals per generation
+                3, // Elites per generation
                 new GenerationCount(150));
 
             // Go!

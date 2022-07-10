@@ -32,7 +32,7 @@ public class ScheduleFactory implements CandidateFactory {
             List<Course> coursesList = new ArrayList<Course>();
 
 
-            //handleMustHaveCourses(coursesList);
+            handleMustHaveCourses(coursesList);
 
             handleRandomCourses(random, coursesList);
 

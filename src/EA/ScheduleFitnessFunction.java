@@ -146,7 +146,7 @@ public class ScheduleFitnessFunction implements FitnessEvaluator<Schedule>
 
         }
 
-        res= (candidate.getCourses().size() - courseNames.size()) * (-generation);
+        res = (candidate.getCourses().size() - courseNames.size()) * (-generation);
         return res;
 
     }

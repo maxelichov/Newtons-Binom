@@ -10,7 +10,14 @@ public class Main
 
     public static void main(String[] args)
     {
-        System.out.println("hids");
+
+        /*
+        todo
+        1. work with files
+        2. servers
+        3. ui platform
+        4. let user to control evolution setting
+         */
         LogicManager logicManager = new LogicManager();
 
         WeekSchedule WeekSchedule= new WeekSchedule();
@@ -201,8 +208,9 @@ public class Main
 
 
         List<Course> mustCourses=new ArrayList<Course>();
+        mustCourses.add(java);
         mustCourses.add(calculus1);
-        Preferences pref = new Preferences(25,100,15,100,courses,40,100,WeekSchedule,mustCourses);
+        Preferences pref = new Preferences(30,100,13,100,courses,40,100,WeekSchedule,mustCourses);
 
 
         logicManager.filterCourses(pref);
